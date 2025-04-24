@@ -1,0 +1,56 @@
+#include <SoftwareSerial.h>
+SoftwareSerial mySerial(4,5);
+int robot = 0 ;
+
+
+void setup()
+{
+
+  mySerial.begin(115200);
+  pinMode( 12 , OUTPUT);
+  pinMode( 3 , OUTPUT);
+  pinMode( 13 , OUTPUT);
+  pinMode( 11 , OUTPUT);
+
+  
+}
+
+void loop()
+{
+  robot = mySerial.read() ;
+  if ( robot == 2 )
+  {
+    digitalWrite(12 , HIGH);
+    analogWrite(3 , 255);
+    digitalWrite(13 , HIGH);
+    analogWrite(11 , 255);
+  }
+  if ( robot == 1e )
+  {
+    digitalWrite(12 , LOW);
+    analogWrite(3 , 255);
+    digitalWrite(13 , LOW);
+    analogWrite(11 , 255);
+  }
+  if ( robot  ==  3 ) 
+  {
+    digitalWrite(12 , LOW);
+    analogWrite(3 , 0);
+    digitalWrite(13 , LOW);
+    analogWrite(11 , 0);
+  }
+  if ( robot  ==  4 ) 
+  {
+    digitalWrite(12 , HIGH);
+    analogWrite(3 , 255);
+    digitalWrite(13 , LOW);
+    analogWrite(11 , 255);
+  }
+  if ( robot  ==  5 ) 
+  {
+    digitalWrite(12 , LOW);
+    analogWrite(3 , 255);
+    digitalWrite(13 , HIGH);
+    analogWrite(11 , 255);
+  }
+}
